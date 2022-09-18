@@ -1,0 +1,73 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/pdf-lib"></script>
+</head>
+
+<body>
+    <div style="text-align: center">
+        Voorkanten:
+        <br>
+        <input id="upload-front" type="file">
+        <br>
+        <br>
+        Achterkanten:
+        <br>
+        <input id="upload-back" type="file">
+        <br>
+        <br>
+        <div onclick="merge()" style="
+              background-color: #4CAF50; /* Green */
+              border: none;
+              color: white;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;">GO</div>
+    </div>
+    
+    <br>
+
+    <iframe id="output" style="width: 100%; height: 100%;"></iframe>
+</body>
+
+<script>
+    function merge(){
+        let front = document.getElementById('upload-front').files[0];
+        let back = document.getElementById('upload-back').files[0];
+        
+        let reader = new FileReader();
+        let docs = [];
+        
+        reader.onload = async function() {
+            let byteArray = new Uint8Array(this.result);
+            let doc = await PDFLib.PDFDocument.load(byteArray);
+            docs.push(doc);
+        }
+
+        reader.onloadend = function() {
+            reader.onloadend = () => processFiles(docs[0], docs[1]);
+            reader.readAsArrayBuffer(back);
+        }
+        reader.readAsArrayBuffer(front);
+    }
+    
+    async function processFiles(front, back){
+        let doc = front;
+        let backIndices = Array(back.getPageCount()).fill().map((x,i) => i);
+        let fronts = await doc.copyPages(back, backIndices);
+        
+        for(let i = 0; i < fronts.length; i++){
+            doc.insertPage(i * 2 + 1, fronts[fronts.length - 1 - i])
+        }
+
+        show(doc);
+    }
+    
+    async function show(doc){
+        const pdfDataUri = await doc.saveAsBase64({ dataUri: true });
+        document.getElementById('output').src = pdfDataUri;
+    }
+</script>
+</html>
