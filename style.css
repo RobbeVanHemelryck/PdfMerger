@@ -91,28 +91,19 @@
 
 
 
-#scroll-container {
-    border-radius: 5px;
+.scroll-container {
     overflow: hidden;
-    color: black;
-    font-size: 30px;
-    font-family: "Comic Sans MS";
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%
 }
 
-#scroll-text {
+.scroll-text {
     /* animation properties */
     -moz-transform: translateX(100%);
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
 
-    -moz-animation: my-animation 5s linear infinite;
-    -webkit-animation: my-animation 5s linear infinite;
-    animation: my-animation 5s linear infinite;
+    -moz-animation: my-animation 3s linear infinite;
+    -webkit-animation: my-animation 3s linear infinite;
+    animation: my-animation 3s linear infinite;
 }
 
 /* for Firefox */
