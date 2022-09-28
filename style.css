@@ -1,15 +1,16 @@
 ﻿.button-1 {
     background-color: #EA4C89;
-    border-radius: 8px;
+    border-radius: 20px;
     border-style: none;
     box-sizing: border-box;
     color: #FFFFFF;
     cursor: pointer;
     display: inline-block;
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 20px;
+    font-size: 70px;
     font-weight: 500;
-    height: 80px;
+    height: 150px;
+    width: 80vw;
     line-height: 20px;
     list-style: none;
     margin: 0;
@@ -23,7 +24,7 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    border: 6px dashed white;
+    border: 10px dashed white;
 }
 
 .button-1:hover,
@@ -49,13 +50,14 @@
 
 
 .btn {
-    border: 4px dotted white;
-    width: 80vw;
+    border: 7px dotted white;
+    width: 60vw;
+    height: 100px;
     color: white;
     background-color: rgb(3, 173, 252);
     padding: 8px 20px;
-    border-radius: 8px;
-    font-size: 40px;
+    border-radius: 15px;
+    font-size: 50px;
 }
 
 .btn:hover {
@@ -68,7 +70,8 @@
     left: 0;
     top: 0;
     opacity: 0;
-    width: 80vw;
+    width: 60vw;
+    height: 100px;
 }
 
 
