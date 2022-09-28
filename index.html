@@ -29,6 +29,10 @@
     
     <br>
 
+    <a id="link" href="#0">No download yet</a>
+    
+    <br>
+
     <iframe id="output"></iframe>
 </body>
 
@@ -62,7 +66,9 @@
             doc.insertPage(i * 2 + 1, fronts[fronts.length - 1 - i])
         }
 
-        show(doc);
+        //show(doc);
+
+        await download3(doc);
     }
     
     async function show(doc){
@@ -70,6 +76,29 @@
 
         download(pdfDataUri);
         document.getElementById('output').src = pdfDataUri;
+    }
+
+    async function download3(doc) {
+
+        const bytes = await doc.save();
+        
+        var blob = new Blob([bytes], {type: "application/pdf"});
+        var link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        var fileName = "jos.pdf";
+        link.download = fileName;
+        link.click();
+    };
+    
+    async function download2(doc){
+
+        const bytes = await doc.save();
+        let link;
+        link = document.getElementById("link");
+        link.href = "data:application/octet-stream," + encodeURIComponent(bytes);
+        link.download = "example-file.csv";
+        link.target = "_blank";
+        link.textContent = "Download example-file.csv";
     }
 
     function download(data) {
