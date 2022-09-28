@@ -50,12 +50,12 @@
 
 .btn {
     border: 4px dotted white;
-    width: 200px;
+    width: 80vw;
     color: white;
     background-color: rgb(3, 173, 252);
     padding: 8px 20px;
     border-radius: 8px;
-    font-size: 20px;
+    font-size: 40px;
 }
 
 .btn:hover {
@@ -68,7 +68,7 @@
     left: 0;
     top: 0;
     opacity: 0;
-    width: 200px;
+    width: 80vw;
 }
 
 
